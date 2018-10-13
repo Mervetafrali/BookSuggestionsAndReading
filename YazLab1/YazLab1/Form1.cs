@@ -16,7 +16,16 @@ namespace YazLab1
         {
             InitializeComponent();
         }
-        ;
-      
+        
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGrid1_Navigate(object sender, NavigateEventArgs ne)
+        {
+
+        }
     }
 }
