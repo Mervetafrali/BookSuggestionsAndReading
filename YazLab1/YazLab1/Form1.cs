@@ -16,5 +16,7 @@ namespace YazLab1
         {
             InitializeComponent();
         }
+        ;
+      
     }
 }
