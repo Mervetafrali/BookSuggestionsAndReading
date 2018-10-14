@@ -63,6 +63,26 @@ namespace YazLab1.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap _2857c1cba7dabcc {
+            get {
+                object obj = ResourceManager.GetObject("2857c1cba7dabcc", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap magic_book_png_1 {
+            get {
+                object obj = ResourceManager.GetObject("magic-book-png-1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap Webp_net_resizeimage {
             get {
                 object obj = ResourceManager.GetObject("Webp.net-resizeimage", resourceCulture);

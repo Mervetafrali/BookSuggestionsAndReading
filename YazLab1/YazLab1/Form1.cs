@@ -27,5 +27,44 @@ namespace YazLab1
         {
 
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void enterbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string admin = "admin";
+                string adpass = "1234";
+                string user1 = "user";
+                string uspass = "1212";
+                if (usertxt.Equals(admin)&&passwordtxt.Equals(adpass))
+                {
+                    MessageBox.Show("Admin");
+                }
+                else if (usertxt.Equals(user1) && passwordtxt.Equals(uspass))
+                {
+                    MessageBox.Show("User");
+                }
+                else
+                {
+                    MessageBox.Show("Error!");
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void newuserbtn_Click(object sender, EventArgs e)
+        {
+            NewUser newuser = new NewUser();
+            newuser.ShowDialog();
+        }
     }
 }
