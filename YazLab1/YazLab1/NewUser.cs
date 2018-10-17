@@ -28,20 +28,40 @@ namespace YazLab1
 
         private void newaddedtxt_Click(object sender, EventArgs e)
         {
-            Islem2 = new UserProvider();
-            user = new User();          
-            user.Password = passwordnewtxt.Text;       
-            user.Location = locationtxt.Text;
-            user.Age = agetxt.Text;
-            if (Islem2.InsertUser(user))
+            try
             {
-                useridlbl.Text = user.UserId;
-                MessageBox.Show("Added");
+                Islem2 = new UserProvider();
+                user = new User();
+                if (!String.IsNullOrEmpty(passwordnewtxt.Text) && !String.IsNullOrEmpty(locationtxt.Text) && !String.IsNullOrEmpty(agetxt.Text))
+                {
+                    user.Password = passwordnewtxt.Text;
+                    user.Location = locationtxt.Text;
+                    user.Age = agetxt.Text;
+                    if (Islem2.InsertUser(user))
+                     {
+                    useridlbl.Text = user.UserId;
+                    MessageBox.Show("Added");
+                    }
+                    else
+                    {
+                    MessageBox.Show("Error!");
+                     }
+                }
+                else
+                {
+                    MessageBox.Show("Fill the blank!");
+                    return;
+
+                }
+                
+                
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show("Already exist!");
+
+                MessageBox.Show("Error!");
             }
+            
         }
     }
 }

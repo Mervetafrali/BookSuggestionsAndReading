@@ -69,7 +69,7 @@ namespace YazLab1
                     connection.Close();
                     user.Id = count + 1;
                     user.UserId = user.Id.ToString();
-                    var command = new SqlCommand("INSERT INTO ['BX-Users']([User-ID],[_Password]) VALUES('" + user.UserId + "','" + user.Password + "')");
+                    var command = new SqlCommand("INSERT INTO ['BX-Users']([User-ID],[Location],[Age],[_Password]) VALUES('" + user.UserId + "','" + user.Location + "','" + user.Age + "','" + user.Password + "')");
                    
                     command.Connection = connection;
                     connection.Open();

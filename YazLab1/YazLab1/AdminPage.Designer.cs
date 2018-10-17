@@ -108,15 +108,17 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(794, 886);
             this.dataGridView1.TabIndex = 10;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Edit
             // 
-            this.Edit.Location = new System.Drawing.Point(135, 223);
+            this.Edit.Location = new System.Drawing.Point(135, 222);
             this.Edit.Name = "Edit";
             this.Edit.Size = new System.Drawing.Size(75, 23);
             this.Edit.TabIndex = 9;
             this.Edit.Text = "Edit:";
             this.Edit.UseVisualStyleBackColor = true;
+            this.Edit.Click += new System.EventHandler(this.Edit_Click);
             // 
             // deletetxt
             // 
@@ -230,6 +232,7 @@
             this.dataGridView2.RowTemplate.Height = 24;
             this.dataGridView2.Size = new System.Drawing.Size(964, 868);
             this.dataGridView2.TabIndex = 19;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // bookdeletetxt
             // 
@@ -257,6 +260,7 @@
             this.addbtn.TabIndex = 16;
             this.addbtn.Text = "Add";
             this.addbtn.UseVisualStyleBackColor = true;
+            this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
             // 
             // urlltxt
             // 
