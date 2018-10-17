@@ -242,6 +242,7 @@
             this.bookdeletetxt.TabIndex = 18;
             this.bookdeletetxt.Text = "Delete";
             this.bookdeletetxt.UseVisualStyleBackColor = true;
+            this.bookdeletetxt.Click += new System.EventHandler(this.bookdeletetxt_Click);
             // 
             // editbtn
             // 
@@ -251,6 +252,7 @@
             this.editbtn.TabIndex = 17;
             this.editbtn.Text = "Edit";
             this.editbtn.UseVisualStyleBackColor = true;
+            this.editbtn.Click += new System.EventHandler(this.editbtn_Click);
             // 
             // addbtn
             // 

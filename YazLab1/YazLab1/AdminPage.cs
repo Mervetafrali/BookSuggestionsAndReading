@@ -82,7 +82,7 @@ namespace YazLab1
 
 
             // Bağlantı açıldığında çalışacak sql sorgusu için cmd nesnesi oluşturulur:
-            SqlCommand cmd = new SqlCommand("SELECT DISTINCT * FROM ['BX-Users'] ", baglanti);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM ['BX-Users'] ORDER BY [User-ID] ASC", baglanti);
 
 
             /* Veriler ile proje arasında adaptör görevi 
@@ -116,7 +116,7 @@ namespace YazLab1
 
 
             // Bağlantı açıldığında çalışacak sql sorgusu için cmd nesnesi oluşturulur:
-            SqlCommand cmd = new SqlCommand("SELECT * FROM ['BX-Books'] ", baglanti);
+            SqlCommand cmd = new SqlCommand("SELECT *  FROM ['BX-Books'] ORDER BY [ISBN] ASC", baglanti);
 
 
             /* Veriler ile proje arasında adaptör görevi 
@@ -175,12 +175,15 @@ namespace YazLab1
 
                 // TextBox'lardan alınan bilgiler etiketlere, oradan da sorguya gönderilir:
                 //cmd.Parameters.AddWithValue("@Id", useridtxt.Text);
+
+
+
+
                 cmd.Parameters.AddWithValue("@Location", locationtxt.Text);
                 cmd.Parameters.AddWithValue("@Age", agetxt.Text);
                 cmd.Parameters.AddWithValue("@Password", Passwordtxt.Text);
                
 
-                // Sorgu çalıştırılır:
                 cmd.ExecuteNonQuery();
 
 
@@ -222,29 +225,96 @@ namespace YazLab1
         {
             try
             {
+                if (!String.IsNullOrEmpty(isbntxt.Text) && !String.IsNullOrEmpty(booktitletxt.Text) && !String.IsNullOrEmpty(bookauthortxt.Text) && !String.IsNullOrEmpty(yoptxt.Text) && !String.IsNullOrEmpty(publishertxt.Text) && !String.IsNullOrEmpty(urlstxt.Text) && !String.IsNullOrEmpty(urlmtxt.Text) && !String.IsNullOrEmpty(urlltxt.Text))
+                {
+                    if (baglanti.State == ConnectionState.Closed)
+                    {
+                        baglanti.Open();
+
+                    }
+
+
+
+                    // Bağlantı açıldığında çalışacak sql sorgusu için cmd nesnesi oluşturulur:                  
+                    // Bağlantı açıldığında çalışacak sql sorgusu için cmd nesnesi oluşturulur:                  
+                    SqlCommand cmd = new SqlCommand("INSERT INTO ['BX-Books'] ([ISBN],[Book-Title],[Book-Author],[Year-Of-Publication],[Publisher],[Image-URL-S],[Image-URL-M],[Image-URL-L])" +
+                    " VALUES (@ISBN,@BookTitle,@BookAuthor,@YearOfPublicatin,@Publisher,@ImageURLS,@ImageURLM,@ImageURLL)", baglanti);
+
+
+                    // TextBox'lardan alınan bilgiler etiketlere, oradan da sorguya gönderilir:
+                    cmd.Parameters.AddWithValue("@ISBN", isbntxt.Text);
+                    cmd.Parameters.AddWithValue("@BookTitle", booktitletxt.Text);
+                    cmd.Parameters.AddWithValue("@BookAuthor", bookauthortxt.Text);
+                    cmd.Parameters.AddWithValue("@YearOfPublicatin", yoptxt.Text);
+                    cmd.Parameters.AddWithValue("@Publisher", publishertxt.Text);
+                    cmd.Parameters.AddWithValue("@ImageURLS", urlstxt.Text);
+                    cmd.Parameters.AddWithValue("@ImageURLM", urlmtxt.Text);
+                    cmd.Parameters.AddWithValue("@ImageURLL", urlltxt.Text);
+                    //Bağlantı kapalı ise açılır:
+
+                    // Sorgu çalıştırılır:
+                    cmd.ExecuteNonQuery();
+
+
+                    // Bağlantı kapatılır:
+                    baglanti.Close();
+
+
+                    // kisiGetir fonksiyonu ile tablonun son hali getirilir:
+                    kisiGetir2();
+
+
+                    // Eklendi mesajı gösterilir:
+                    MessageBox.Show("Added.");
+                }
+                else
+                {
+                    MessageBox.Show("Fill the blank!");
+                }
+            }
+
+
+            // Bir yerde hata varsa catch ile yakalanır ve mesaj verilir:
+            catch (SqlException)
+            {
+                MessageBox.Show("Error!");
+            }
+
+          
+
+        
+
+
+    }
+
+        private void editbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Bağlantı kapalı ise açılır:
                 if (baglanti.State == ConnectionState.Closed)
                 {
                     baglanti.Open();
-
                 }
+                // Bağlantı açıldığında çalışacak sql sorgusu için cmd nesnesi oluşturulur: 
+                SqlCommand cmd = new SqlCommand("UPDATE ['BX-Books'] SET [ISBN]=@ISBN,[Book-Title]=@BookTitle,[Book-Author]=@BookAuthor,[Year-Of-Publication]=@YearOfPublicatin,[Publisher]=@Publisher" +
+                    ",[Image-URL-S]=@ImageURLS,[Image-URL-M]=@ImageURLM,[Image-URL-L]=@ImageURLL WHERE [ISBN]=@isbn ", baglanti);
 
 
-
-                // Bağlantı açıldığında çalışacak sql sorgusu için cmd nesnesi oluşturulur:                  
-                // Bağlantı açıldığında çalışacak sql sorgusu için cmd nesnesi oluşturulur:                  
-                SqlCommand cmd = new SqlCommand("INSERT INTO 'BX-Books' ([ISBN],[Book-Title],[Year-Of-Publication],[Publisher],[Image-URL-S],[Image-URL-M],[Image-URL-L])" +
-                    " VALUES (@ISBN,@BookTitle,@YearOfPublicatin,@Publisher,@ImageURLS,@ImageURLM,@ImageURLL)", baglanti);
+                // Fare ile seçilmiş satırın değeri @id'ye aktarılır:
+                cmd.Parameters.AddWithValue("@isbn", dataGridView2.CurrentRow.Cells[0].Value);
 
 
                 // TextBox'lardan alınan bilgiler etiketlere, oradan da sorguya gönderilir:
+                // cmd.Parameters.AddWithValue("@isbn, isbntxt.Text);
                 cmd.Parameters.AddWithValue("@ISBN", isbntxt.Text);
                 cmd.Parameters.AddWithValue("@BookTitle", booktitletxt.Text);
+                cmd.Parameters.AddWithValue("@BookAuthor", bookauthortxt.Text);
                 cmd.Parameters.AddWithValue("@YearOfPublicatin", yoptxt.Text);
                 cmd.Parameters.AddWithValue("@Publisher", publishertxt.Text);
                 cmd.Parameters.AddWithValue("@ImageURLS", urlstxt.Text);
                 cmd.Parameters.AddWithValue("@ImageURLM", urlmtxt.Text);
                 cmd.Parameters.AddWithValue("@ImageURLL", urlltxt.Text);
-                //Bağlantı kapalı ise açılır:
 
                 // Sorgu çalıştırılır:
                 cmd.ExecuteNonQuery();
@@ -255,11 +325,11 @@ namespace YazLab1
 
 
                 // kisiGetir fonksiyonu ile tablonun son hali getirilir:
-                kisiGetir();
+                kisiGetir2();
 
 
-                // Eklendi mesajı gösterilir:
-                MessageBox.Show("Added.");
+                // Güncellendi mesajı gösterilir:
+                MessageBox.Show("Updated.");
             }
 
 
@@ -268,11 +338,50 @@ namespace YazLab1
             {
                 MessageBox.Show("Error!");
             }
+        }
 
-        
+        private void bookdeletetxt_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (baglanti.State == ConnectionState.Closed)
+                {
+                    baglanti.Open();
+                }
+                // bağlantı açıldığında çalışacak sql sorgusu için cmd nesnesi oluşturulur:
+                SqlCommand cmd = new SqlCommand("DELETE FROM ['BX-Books'] WHERE ISBN=@Isbn", baglanti);
 
 
+                // Fare ile seçili satırın değeri @id'ye aktarılır:
+                cmd.Parameters.AddWithValue("@Isbn", dataGridView2.CurrentRow.Cells[0].Value);
+
+
+
+
+
+                // Sorgu çalıştırılır:
+                cmd.ExecuteNonQuery();
+
+
+                // Bağlantı kapatılır:
+                baglanti.Close();
+
+
+                // kisiGetir fonksiyonu ile tablonun son hali getirilir:
+                kisiGetir2();
+
+
+                // Silindi mesajı gösterilir:
+                MessageBox.Show("Deleted.");
+            }
+
+
+            // Bir yerde hata varsa catch ile yakalanır ve mesaj verilir:
+            catch (SqlException)
+            {
+                MessageBox.Show("Error!");
+            }
+        }
     }
-}
 }
 
