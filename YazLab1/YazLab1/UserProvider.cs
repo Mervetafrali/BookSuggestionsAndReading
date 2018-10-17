@@ -14,7 +14,7 @@ namespace YazLab1
             User user = null;
             using (var connection = Database.GetConnection())
             {
-                var command = new SqlCommand("SELECT *FROM [BX-Entry] WHERE Name='" + name + "' and Password='" + password + "'");
+                var command = new SqlCommand("SELECT *FROM ['BX-Users'] WHERE [User-ID]='" + name + "' and _Password='" + password + "'");
                 command.Connection = connection;
                 connection.Open();
                 using (var reader = command.ExecuteReader())
@@ -22,9 +22,10 @@ namespace YazLab1
                     while (reader.Read())
                     {
                         user = new User();
-                        user.Id = reader.GetInt32(0); //id
-                        user.Name = reader.GetString(1);   //name
-                        user.Password = reader.GetString(2);  //password
+                        user.UserId = reader.GetDouble(0).ToString(); //id
+                        user.Location = reader.GetString(1);   //name
+                        user.Age = reader.GetString(2);
+                        user.Password = reader.GetString(3);  //password
                     }
                 }
                 connection.Close();
@@ -37,7 +38,7 @@ namespace YazLab1
             bool result = false;
             using (var connection = Database.GetConnection())
             {
-                var command = new SqlCommand("SELECT *FROM [BX-Entry] WHERE Name='" + user.Name + "' and Password='" + user.Password + "'");
+                var command = new SqlCommand("SELECT *FROM ['BX-Users'] WHERE [User-ID]='" + user.UserId + "' and _Password='" + user.Password + "'");
                 command.Connection = connection;
                 connection.Open();
                 using (var reader = command.ExecuteReader())
@@ -59,7 +60,7 @@ namespace YazLab1
             {
                 using (var connection = Database.GetConnection())
                 {
-                    var stmt = new SqlCommand("SELECT COUNT(*) FROM [BX-Entry]");
+                    var stmt = new SqlCommand("SELECT COUNT(*) FROM ['BX-Users']");
                     int count = 0;
                     stmt.Connection = connection;
                     connection.Open();
@@ -67,8 +68,9 @@ namespace YazLab1
                     count = Int32.Parse(stmt.ExecuteScalar().ToString());
                     connection.Close();
                     user.Id = count + 1;
-                    var command = new SqlCommand("INSERT INTO [BX-Entry](Id,Name,Password) VALUES('" + user.Id + "','" + user.Name + "','" + user.Password + "')");
-                    insert(user);
+                    user.UserId = user.Id.ToString();
+                    var command = new SqlCommand("INSERT INTO ['BX-Users']([User-ID],[_Password]) VALUES('" + user.UserId + "','" + user.Password + "')");
+                   
                     command.Connection = connection;
                     connection.Open();
 
@@ -81,27 +83,6 @@ namespace YazLab1
             }
             return result;
         }
-        public bool  insert(User user)
-        {
-            
-            bool result = false;
-            if (!ContainsUser(user))
-            {
-                using (var connection = Database.GetConnection())
-                {
-                   var command1 = new SqlCommand("INSERT INTO [BX-Users](_User_Id_,_Location_,_Age_) VALUES('" + user.UserId + "','" + user.Location + "','" + user.Age + "')");
-
-                    command1.Connection = connection;
-                    connection.Open();
-
-                    if (command1.ExecuteNonQuery() != -1)
-                    {
-                        result = true;
-                    }
-                    connection.Close();
-                }
-            }
-            return result;
-        }
+        
     }
 }

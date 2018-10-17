@@ -29,14 +29,13 @@ namespace YazLab1
         private void newaddedtxt_Click(object sender, EventArgs e)
         {
             Islem2 = new UserProvider();
-            user = new User();
-            user.UserId= newuseridtxt.Text;
-            user.Name = usernamenewtxt.Text;
+            user = new User();          
             user.Password = passwordnewtxt.Text;       
             user.Location = locationtxt.Text;
             user.Age = agetxt.Text;
             if (Islem2.InsertUser(user))
             {
+                useridlbl.Text = user.UserId;
                 MessageBox.Show("Added");
             }
             else
