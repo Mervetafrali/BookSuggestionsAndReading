@@ -41,6 +41,7 @@ namespace YazLab1
                      {
                     useridlbl.Text = user.UserId;
                         MessageBox.Show("Please select 10 books to complete your membership ");
+                        this.Hide();
                         NUserRating page1 = new NUserRating();
                         page1.id = user.UserId;
                         page1.ShowDialog();
