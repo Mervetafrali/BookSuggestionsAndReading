@@ -40,7 +40,11 @@ namespace YazLab1
                     if (Islem2.InsertUser(user))
                      {
                     useridlbl.Text = user.UserId;
-                    MessageBox.Show("Added");
+                        MessageBox.Show("Please select 10 books to complete your membership ");
+                        NUserRating page1 = new NUserRating();
+                        page1.id = user.UserId;
+                        page1.ShowDialog();
+                        
                     }
                     else
                     {
@@ -62,6 +66,12 @@ namespace YazLab1
                 MessageBox.Show("Error!");
             }
             
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            NUserRating page1 = new NUserRating();
+            page1.ShowDialog();
         }
     }
 }

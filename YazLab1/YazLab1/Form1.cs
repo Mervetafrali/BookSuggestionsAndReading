@@ -43,6 +43,7 @@ namespace YazLab1
              if (user1 != null  )
                 {
                     MessageBox.Show("true");
+                        this.Hide();
                     UserMainPage page = new UserMainPage();
                      page.ShowDialog();
                 }
@@ -71,7 +72,7 @@ namespace YazLab1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //pictureBox1.Load("https://www.agac.gen.tr/images/agac-nedir.jpg");
+            
         }
     }
 }

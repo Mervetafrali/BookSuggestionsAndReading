@@ -21,5 +21,11 @@ namespace YazLab1
         {
 
         }
+
+        private void UserMainPage_Load(object sender, EventArgs e)
+        {
+           
+        
+        }
     }
 }
