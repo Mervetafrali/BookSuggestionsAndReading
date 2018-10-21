@@ -19,17 +19,12 @@ namespace YazLab1
           
         }
         // baglanti nesnesi oluşturulur:
-        SqlConnection baglanti = new SqlConnection("Data Source = MTAFRALI\\SQLEXPRESS; Initial Catalog = bb; Integrated Security = true");
+        SqlConnection baglanti = new SqlConnection("Data Source = MSI\\SQLEXPRESS; Initial Catalog = YazLab1; Integrated Security = true");
 
         int Id = 0;
         
-
-
-
         // kisiler tablosundaki verileri çekmek için yazılan fonksiyon:
        
-
-
         private void deletetxt_Click(object sender, EventArgs e)
         {
             // try ile yazacağımız kod denenir:
@@ -71,7 +66,7 @@ namespace YazLab1
                 MessageBox.Show("Error!");
             }
         }
-       void kisiGetir()
+        void kisiGetir()
         {
 
             // Bağlantı durumu kontrol edilip kapalı ise açılır:
@@ -142,7 +137,7 @@ namespace YazLab1
 
         private void AdminPage_Load(object sender, EventArgs e)
         {
-            SqlConnection baglanti = new SqlConnection("Data Source = MTAFRALI\\SQLEXPRESS; Initial Catalog = bb; Integrated Security = true");
+            SqlConnection baglanti = new SqlConnection("Data Source = MSI\\SQLEXPRESS; Initial Catalog = YazLab1; Integrated Security = true");
             kisiGetir();
             kisiGetir2();
         }
