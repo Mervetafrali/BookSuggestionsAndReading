@@ -19,7 +19,7 @@ namespace YazLab1
           
         }
         // baglanti nesnesi oluşturulur:
-        SqlConnection baglanti = new SqlConnection("Data Source = MSI\\SQLEXPRESS; Initial Catalog = YazLab1; Integrated Security = true");
+        SqlConnection baglanti = new SqlConnection("Data Source = MTAFRALI\\SQLEXPRESS; Initial Catalog = bb; Integrated Security = true");
 
         int Id = 0;
         
@@ -137,7 +137,7 @@ namespace YazLab1
 
         private void AdminPage_Load(object sender, EventArgs e)
         {
-            SqlConnection baglanti = new SqlConnection("Data Source = MSI\\SQLEXPRESS; Initial Catalog = YazLab1; Integrated Security = true");
+            SqlConnection baglanti = new SqlConnection("Data Source = MTAFRALI\\SQLEXPRESS; Initial Catalog = bb; Integrated Security = true");
             kisiGetir();
             kisiGetir2();
         }
@@ -232,9 +232,9 @@ namespace YazLab1
 
                     // Bağlantı açıldığında çalışacak sql sorgusu için cmd nesnesi oluşturulur:                  
                     // Bağlantı açıldığında çalışacak sql sorgusu için cmd nesnesi oluşturulur:                  
-                    SqlCommand cmd = new SqlCommand("INSERT INTO ['BX-Books'] ([ISBN],[Book-Title],[Book-Author],[Year-Of-Publication],[Publisher],[Image-URL-S],[Image-URL-M],[Image-URL-L])" +
-                    " VALUES (@ISBN,@BookTitle,@BookAuthor,@YearOfPublicatin,@Publisher,@ImageURLS,@ImageURLM,@ImageURLL)", baglanti);
-
+                    SqlCommand cmd = new SqlCommand("INSERT INTO ['BX-Books'] ([ISBN],[Book-Title],[Book-Author],[Year-Of-Publication],[Publisher],[Image-URL-S],[Image-URL-M],[Image-URL-L],[dd])" +
+                    " VALUES (@ISBN,@BookTitle,@BookAuthor,@YearOfPublicatin,@Publisher,@ImageURLS,@ImageURLM,@ImageURLL,@dd)", baglanti);
+                    DateTime now = DateTime.Now;
 
                     // TextBox'lardan alınan bilgiler etiketlere, oradan da sorguya gönderilir:
                     cmd.Parameters.AddWithValue("@ISBN", isbntxt.Text);
@@ -245,6 +245,7 @@ namespace YazLab1
                     cmd.Parameters.AddWithValue("@ImageURLS", urlstxt.Text);
                     cmd.Parameters.AddWithValue("@ImageURLM", urlmtxt.Text);
                     cmd.Parameters.AddWithValue("@ImageURLL", urlltxt.Text);
+                    cmd.Parameters.AddWithValue("@dd", now);
                     //Bağlantı kapalı ise açılır:
 
                     // Sorgu çalıştırılır:

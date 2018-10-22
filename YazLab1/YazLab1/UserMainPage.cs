@@ -18,7 +18,7 @@ namespace YazLab1
             InitializeComponent();
         }
 
-        SqlConnection baglanti = new SqlConnection("Data Source = MSI\\SQLEXPRESS; Initial Catalog = YazLab1; Integrated Security = true");
+        SqlConnection baglanti = new SqlConnection("Data Source = MTAFRALI\\SQLEXPRESS; Initial Catalog = bb; Integrated Security = true");
 
         void KitaplariGetir()
         {
@@ -27,7 +27,7 @@ namespace YazLab1
                 baglanti.Open();
             }
 
-            SqlCommand c = new SqlCommand("SELECT [ISBN],[Book-Title],[Book-Author],[Year-Of-Publication],[Publisher] FROM ['BX-Books']", baglanti);
+            SqlCommand c = new SqlCommand("SELECT [ISBN],[Book-Title],[Book-Author],[Year-Of-Publication],[Publisher],[Image-URL-M] FROM ['BX-Books']", baglanti);
             SqlDataAdapter a = new SqlDataAdapter(c);
             DataTable dt = new DataTable();
             a.Fill(dt);
@@ -41,7 +41,7 @@ namespace YazLab1
                 baglanti.Open();
             }
 
-            SqlCommand c = new SqlCommand("SELECT top 5 [Book-Title],[Book-Author] FROM ['BX-Books'] ORDER BY [Book-Title] DESC", baglanti);
+            SqlCommand c = new SqlCommand("SELECT top 5 [Book-Title],[Book-Author] FROM ['BX-Books'] ORDER BY [dd] DESC", baglanti);
             SqlDataAdapter a = new SqlDataAdapter(c);
             DataTable dt = new DataTable();
             a.Fill(dt);
@@ -86,7 +86,7 @@ namespace YazLab1
 
         private void UserMainPage_Load(object sender, EventArgs e)
         {
-            SqlConnection baglanti = new SqlConnection("Data Source = MSI\\SQLEXPRESS; Initial Catalog = YazLab1; Integrated Security = true");
+            SqlConnection baglanti = new SqlConnection("Data Source = MTAFRALI\\SQLEXPRESS; Initial Catalog = YazLab1; Integrated Security = true");
             KitaplariGetir();
             LastAdditionBring();
             Popular();
@@ -106,7 +106,7 @@ namespace YazLab1
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            SqlConnection baglanti = new SqlConnection("Data Source = MSI\\SQLEXPRESS; Initial Catalog = YazLab1; Integrated Security = true");
+            SqlConnection baglanti = new SqlConnection("Data Source = MTAFRALI\\SQLEXPRESS; Initial Catalog = bb; Integrated Security = true");
 
         }
 
@@ -117,8 +117,9 @@ namespace YazLab1
             lblBookAuthor.Text = (dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString());
             lblyop.Text = (dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString());
             lblPublisher.Text = (dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString());
-            //resmi ekleyemedim
-            //pictureBox1
+           
+            pictureBox1.Load(dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString());
+            
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
@@ -141,6 +142,29 @@ namespace YazLab1
 
         private void label4_Click_1(object sender, EventArgs e)
         {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+
+            // set file filter of dialog 
+
+            dlg.Filter = "pdf files (08333696.pdf) |08333696.pdf;";
+
+            dlg.ShowDialog();
+
+            if (dlg.FileName != null)
+
+            {
+
+                // use the LoadFile(ByVal fileName As String) function for open the pdf in control
+
+                axAcroPDF1.LoadFile(dlg.FileName);
+
+            }
+
 
         }
     }
