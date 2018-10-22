@@ -106,6 +106,9 @@
     <EmbeddedResource Include="UserMainPage.resx">
       <DependentUpon>UserMainPage.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="08333696.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -120,7 +123,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\08333696.pdf" />
+    <None Include="Resources\08333696.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\Webp.net-resizeimage.png" />
   </ItemGroup>
   <ItemGroup>

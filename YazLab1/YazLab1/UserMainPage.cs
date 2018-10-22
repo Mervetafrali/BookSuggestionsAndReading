@@ -8,11 +8,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace YazLab1
 {
     public partial class UserMainPage : Form
     {
+        public string id;
+        public class topten
+        {
+            public string booktitle;
+            public string bookauthor;
+        }
+        public class popular
+        {
+            public string booktitle;
+            public string bookauthor;
+        }
+        public class last
+        {
+            public string booktitle;
+            public string bookauthor;
+        }
         public UserMainPage()
         {
             InitializeComponent();
@@ -43,9 +60,35 @@ namespace YazLab1
 
             SqlCommand c = new SqlCommand("SELECT top 5 [Book-Title],[Book-Author] FROM ['BX-Books'] ORDER BY [dd] DESC", baglanti);
             SqlDataAdapter a = new SqlDataAdapter(c);
-            DataTable dt = new DataTable();
-            a.Fill(dt);
-            dataGridView2.DataSource = dt;
+            List<last> last = new List<last>();
+            SqlDataReader myReader = null;
+            SqlDataAdapter adp = new SqlDataAdapter(c);
+            myReader = c.ExecuteReader();
+            while (myReader.Read())
+            {
+                last f = new last();
+                //düzenlenecek
+                f.bookauthor = (myReader["Book-Author"].ToString());
+                f.booktitle = (myReader["Book-Title"].ToString());
+                last.Add(f);
+
+            }
+            baglanti.Close();
+            for (int i = 0; i < 5; i++)
+            {
+                label54.Text = last[0].booktitle.ToString();
+                label55.Text = last[0].bookauthor.ToString();
+                label56.Text = last[1].booktitle.ToString();
+                label57.Text = last[1].bookauthor.ToString();
+                label58.Text = last[2].booktitle.ToString();
+                label59.Text = last[2].bookauthor.ToString();
+                label50.Text = last[3].booktitle.ToString();
+                label51.Text = last[3].bookauthor.ToString();
+                label52.Text = last[4].booktitle.ToString();
+                label53.Text = last[4].bookauthor.ToString();
+            }
+
+            
             baglanti.Close();
         }
         void Popular()
@@ -57,9 +100,46 @@ namespace YazLab1
 
             SqlCommand c = new SqlCommand("select top 20 SUM(['BX-Book-Ratings'].[Book-Rating]) as toplam_oy , ['BX-Books'].[Book-Title] from ['BX-Book-Ratings'] inner join['BX-Books'] on['BX-Book-Ratings'].ISBN = ['BX-Books'].ISBN  group by['BX-Books'].[Book-Title]  order by toplam_oy desc", baglanti);
             SqlDataAdapter a = new SqlDataAdapter(c);
-            DataTable dt = new DataTable();
-            a.Fill(dt);
-            dataGridView3.DataSource = dt;
+            List<popular> popular = new List<popular>();
+            SqlDataReader myReader = null;
+            SqlDataAdapter adp = new SqlDataAdapter(c);
+            myReader = c.ExecuteReader();
+            while (myReader.Read())
+            {
+                popular f = new popular();
+                //düzenlenecek
+                f.booktitle = (myReader["toplam_oy"].ToString());
+                f.bookauthor = (myReader["Book-Title"].ToString());
+                popular.Add(f);
+
+            }
+            baglanti.Close();
+            for (int i = 0; i < 10; i++)
+            {
+                label29.Text = popular[0].booktitle.ToString();
+                label30.Text = popular[0].bookauthor.ToString();
+                label31.Text = popular[1].booktitle.ToString();
+                label32.Text = popular[1].bookauthor.ToString();
+                label33.Text = popular[2].booktitle.ToString();
+                label34.Text = popular[2].bookauthor.ToString();
+                label35.Text = popular[3].booktitle.ToString();
+                label36.Text = popular[3].bookauthor.ToString();
+                label37.Text = popular[4].booktitle.ToString();
+                label38.Text = popular[4].bookauthor.ToString();
+                label39.Text = popular[5].booktitle.ToString();
+                label40.Text = popular[5].bookauthor.ToString();
+                label41.Text = popular[6].booktitle.ToString();
+                label42.Text = popular[6].bookauthor.ToString();
+                label43.Text = popular[7].booktitle.ToString();
+                label44.Text = popular[7].bookauthor.ToString();
+                label45.Text = popular[8].booktitle.ToString();
+                label46.Text = popular[8].bookauthor.ToString();
+                label47.Text = popular[9].booktitle.ToString();
+                label48.Text = popular[9].bookauthor.ToString();
+
+
+            }
+
             baglanti.Close();
 
         }
@@ -71,14 +151,68 @@ namespace YazLab1
             }
 
             SqlCommand c = new SqlCommand("select top 10 AVG(['BX-Book-Ratings'].[Book-Rating]) as ortalama_oy, ['BX-Books'].[Book-Title] from ['BX-Book-Ratings'] inner join ['BX-Books'] on ['BX-Book-Ratings'].ISBN = ['BX-Books'].ISBN  group by['BX-Books'].[Book-Title]  order by ortalama_oy desc", baglanti);
-            SqlDataAdapter a = new SqlDataAdapter(c);
-            DataTable dt = new DataTable();
-            a.Fill(dt);
-            dataGridView4.DataSource = dt;
+            List<topten> fruits = new List<topten>();
+            SqlDataReader myReader = null;
+          
+            SqlDataAdapter adp = new SqlDataAdapter(c);
+            myReader = c.ExecuteReader();
+            while (myReader.Read())
+            {
+                topten f = new topten();
+                //düzenlenecek
+                f.booktitle = (myReader["ortalama_oy"].ToString());
+                f.bookauthor = (myReader["Book-Title"].ToString());
+                fruits.Add(f);
+                
+            }
             baglanti.Close();
+            for (int i = 0; i < 10; i++)
+            {
+                label9.Text = fruits[0].booktitle.ToString();
+                label10.Text = fruits[0].bookauthor.ToString();
+                label11.Text = fruits[1].booktitle.ToString();
+                label12.Text = fruits[1].bookauthor.ToString();
+                label13.Text = fruits[2].booktitle.ToString();
+                label14.Text = fruits[2].bookauthor.ToString();
+                label15.Text = fruits[3].booktitle.ToString();
+                label16.Text = fruits[3].bookauthor.ToString();
+                label17.Text = fruits[4].booktitle.ToString();
+                label18.Text = fruits[4].bookauthor.ToString();
+                label19.Text = fruits[5].booktitle.ToString();
+                label20.Text = fruits[5].bookauthor.ToString();
+                label21.Text = fruits[6].booktitle.ToString();
+                label22.Text = fruits[6].bookauthor.ToString();
+                label23.Text = fruits[7].booktitle.ToString();
+                label24.Text = fruits[7].bookauthor.ToString();
+                label25.Text = fruits[8].booktitle.ToString();
+                label26.Text = fruits[8].bookauthor.ToString();
+                label27.Text = fruits[9].booktitle.ToString();
+                label28.Text = fruits[9].bookauthor.ToString();
+                
+                
+            }
 
         }
+        void kontrol()
+        {
+            using (var connection = Database.GetConnection())
+            {
+                var stmt = new SqlCommand("SELECT COUNT([Book-Rating]) FROM[bb].[dbo].['BX-Book-Ratings'] where['BX-Book-Ratings'].[User-ID] ='" +id + "' and ['BX-Book-Ratings'].[User-ID]>278859");
+                int count = 0;
+                stmt.Connection = connection;
+                connection.Open();
 
+                count = Int32.Parse(stmt.ExecuteScalar().ToString());
+                if (count < 10)
+                {
+                    NUserRating page1 = new NUserRating();
+                    page1.id = id;
+                    page1.ShowDialog();
+                }
+                connection.Close();
+            }
+            
+           }
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -87,10 +221,12 @@ namespace YazLab1
         private void UserMainPage_Load(object sender, EventArgs e)
         {
             SqlConnection baglanti = new SqlConnection("Data Source = MTAFRALI\\SQLEXPRESS; Initial Catalog = YazLab1; Integrated Security = true");
+
             KitaplariGetir();
             LastAdditionBring();
             Popular();
             TopTen();
+            kontrol();
         
         }
 
@@ -147,22 +283,14 @@ namespace YazLab1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dlg = new OpenFileDialog();
-
-            // set file filter of dialog 
-
-            dlg.Filter = "pdf files (08333696.pdf) |08333696.pdf;";
-
-            dlg.ShowDialog();
-
-            if (dlg.FileName != null)
-
+            try
             {
-
-                // use the LoadFile(ByVal fileName As String) function for open the pdf in control
-
-                axAcroPDF1.LoadFile(dlg.FileName);
-
+                
+                Process.Start("08333696.pdf");
+            }
+            catch (Exception )
+            {
+                MessageBox.Show("Could not open the file.", "Error");
             }
 
 

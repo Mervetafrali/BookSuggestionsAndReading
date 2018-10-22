@@ -45,7 +45,8 @@ namespace YazLab1
                     MessageBox.Show("true");
                         this.Hide();
                     UserMainPage page = new UserMainPage();
-                     page.ShowDialog();
+                    page.id = usertxt.Text;
+                    page.ShowDialog();
                 }
                 else
                 {
