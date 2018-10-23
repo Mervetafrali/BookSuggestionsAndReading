@@ -195,9 +195,9 @@ namespace YazLab1
         }
         void kontrol()
         {
-            using (var connection = Database.GetConnection())
-            {
-                var stmt = new SqlCommand("SELECT COUNT([Book-Rating]) FROM[bb].[dbo].['BX-Book-Ratings'] where['BX-Book-Ratings'].[User-ID] ='" +id + "' and ['BX-Book-Ratings'].[User-ID]>278859");
+
+                var connection = Database.GetConnection();
+                var stmt = new SqlCommand("SELECT COUNT([Book-Rating]) FROM[bb].[dbo].['BX-Book-Ratings'] where['BX-Book-Ratings'].[User-ID] ='" +id + "' or ['BX-Book-Ratings'].[User-ID]>278859");
                 int count = 0;
                 stmt.Connection = connection;
                 connection.Open();
@@ -208,9 +208,10 @@ namespace YazLab1
                     NUserRating page1 = new NUserRating();
                     page1.id = id;
                     page1.ShowDialog();
+                    this.Hide();
                 }
                 connection.Close();
-            }
+            
             
            }
         private void label1_Click(object sender, EventArgs e)
@@ -294,6 +295,13 @@ namespace YazLab1
             }
 
 
+        }
+        
+
+        private void UserMainPage_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MessageBox.Show("Goodbye");
+            Application.Exit();
         }
     }
 }
