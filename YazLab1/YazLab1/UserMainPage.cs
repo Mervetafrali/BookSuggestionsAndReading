@@ -246,38 +246,83 @@ namespace YazLab1
             }
             if (a==2)
             {
+                label83.Text = f2[0].booktitle.ToString();
                 label84.Text = f2[1].booktitle.ToString();
             }
             if (a==3)
             {
+                label83.Text = f2[0].booktitle.ToString();
+                label84.Text = f2[1].booktitle.ToString();
                 label85.Text = f2[2].booktitle.ToString();
             }
             if (a==4)
             {
+                label83.Text = f2[0].booktitle.ToString();
+                label84.Text = f2[1].booktitle.ToString();
+                label85.Text = f2[2].booktitle.ToString();
                 label86.Text = f2[3].booktitle.ToString();
             }
             if (a==5)
             {
+                label83.Text = f2[0].booktitle.ToString();
+                label84.Text = f2[1].booktitle.ToString();
+                label85.Text = f2[2].booktitle.ToString();
+                label86.Text = f2[3].booktitle.ToString();
                 label87.Text = f2[4].booktitle.ToString();
             }
             if (a==6)
             {
+                label83.Text = f2[0].booktitle.ToString();
+                label84.Text = f2[1].booktitle.ToString();
+                label85.Text = f2[2].booktitle.ToString();
+                label86.Text = f2[3].booktitle.ToString();
+                label87.Text = f2[4].booktitle.ToString();
                 label88.Text = f2[5].booktitle.ToString();
             }
             if (a==7)
             {
+                label83.Text = f2[0].booktitle.ToString();
+                label84.Text = f2[1].booktitle.ToString();
+                label85.Text = f2[2].booktitle.ToString();
+                label86.Text = f2[3].booktitle.ToString();
+                label87.Text = f2[4].booktitle.ToString();
+                label88.Text = f2[5].booktitle.ToString();
                 label89.Text = f2[6].booktitle.ToString();
             }
             if (a==8)
             {
+                label83.Text = f2[0].booktitle.ToString();
+                label84.Text = f2[1].booktitle.ToString();
+                label85.Text = f2[2].booktitle.ToString();
+                label86.Text = f2[3].booktitle.ToString();
+                label87.Text = f2[4].booktitle.ToString();
+                label88.Text = f2[5].booktitle.ToString();
+                label89.Text = f2[6].booktitle.ToString();
                 label90.Text = f2[7].booktitle.ToString();
             }
             if (a==9)
             {
+                label83.Text = f2[0].booktitle.ToString();
+                label84.Text = f2[1].booktitle.ToString();
+                label85.Text = f2[2].booktitle.ToString();
+                label86.Text = f2[3].booktitle.ToString();
+                label87.Text = f2[4].booktitle.ToString();
+                label88.Text = f2[5].booktitle.ToString();
+                label89.Text = f2[6].booktitle.ToString();
+                label90.Text = f2[7].booktitle.ToString();
                 label91.Text = f2[8].booktitle.ToString();
             }
             if (a==10)
             {
+                label83.Text = f2[0].booktitle.ToString();
+                label84.Text = f2[1].booktitle.ToString();
+                label85.Text = f2[2].booktitle.ToString();
+                label86.Text = f2[3].booktitle.ToString();
+                label87.Text = f2[4].booktitle.ToString();
+                label88.Text = f2[5].booktitle.ToString();
+                label89.Text = f2[6].booktitle.ToString();
+                label90.Text = f2[7].booktitle.ToString();
+                label91.Text = f2[8].booktitle.ToString();
                 label92.Text = f2[9].booktitle.ToString();
             }
             
