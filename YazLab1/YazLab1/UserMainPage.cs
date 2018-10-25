@@ -30,6 +30,12 @@ namespace YazLab1
             public string booktitle;
             public string bookauthor;
         }
+        public class SeninOyladıkların
+        {
+            public string booktitle;
+            public string busr;
+            
+        }
         public UserMainPage()
         {
             InitializeComponent();
@@ -98,7 +104,7 @@ namespace YazLab1
                 baglanti.Open();
             }
 
-            SqlCommand c = new SqlCommand("select top 20 SUM(['BX-Book-Ratings'].[Book-Rating]) as toplam_oy , ['BX-Books'].[Book-Title] from ['BX-Book-Ratings'] inner join['BX-Books'] on['BX-Book-Ratings'].ISBN = ['BX-Books'].ISBN  group by['BX-Books'].[Book-Title]  order by toplam_oy desc", baglanti);
+            SqlCommand c = new SqlCommand("select top 10 count(['BX-Book-Ratings'].[Book-Rating]) as kac_kisi_oyladi, ['BX-Books'].[Book-Title] from ['BX-Book-Ratings'] inner join['BX-Books'] on ['BX-Book-Ratings'].ISBN = ['BX-Books'].ISBN  group by['BX-Books'].[Book-Title]  order by kac_kisi_oyladi desc", baglanti);
             SqlDataAdapter a = new SqlDataAdapter(c);
             List<popular> popular = new List<popular>();
             SqlDataReader myReader = null;
@@ -108,14 +114,13 @@ namespace YazLab1
             {
                 popular f = new popular();
                 //düzenlenecek
-                f.booktitle = (myReader["toplam_oy"].ToString());
+                f.booktitle = (myReader["kac_kisi_oyladi"].ToString());
                 f.bookauthor = (myReader["Book-Title"].ToString());
                 popular.Add(f);
 
             }
-            baglanti.Close();
-            for (int i = 0; i < 10; i++)
-            {
+                baglanti.Close();
+            
                 label29.Text = popular[0].booktitle.ToString();
                 label30.Text = popular[0].bookauthor.ToString();
                 label31.Text = popular[1].booktitle.ToString();
@@ -135,10 +140,7 @@ namespace YazLab1
                 label45.Text = popular[8].booktitle.ToString();
                 label46.Text = popular[8].bookauthor.ToString();
                 label47.Text = popular[9].booktitle.ToString();
-                label48.Text = popular[9].bookauthor.ToString();
-
-
-            }
+                label48.Text = popular[9].bookauthor.ToString();      
 
             baglanti.Close();
 
@@ -150,7 +152,7 @@ namespace YazLab1
                 baglanti.Open();
             }
 
-            SqlCommand c = new SqlCommand("select top 10 AVG(['BX-Book-Ratings'].[Book-Rating]) as ortalama_oy, ['BX-Books'].[Book-Title] from ['BX-Book-Ratings'] inner join ['BX-Books'] on ['BX-Book-Ratings'].ISBN = ['BX-Books'].ISBN  group by['BX-Books'].[Book-Title]  order by ortalama_oy desc", baglanti);
+            SqlCommand c = new SqlCommand(" select top 10 AVG(['BX-Book-Ratings'].[Book-Rating]) as ortalama_oy, ['BX-Books'].[Book-Title] from ['BX-Book-Ratings'] inner join['BX-Books'] on ['BX-Book-Ratings'].ISBN = ['BX-Books'].ISBN  group by['BX-Books'].[Book-Title]  order by ortalama_oy desc", baglanti);
             List<topten> fruits = new List<topten>();
             SqlDataReader myReader = null;
           
@@ -214,6 +216,79 @@ namespace YazLab1
             
             
            }
+        void SOyladıkların()
+        {
+            if (baglanti.State == ConnectionState.Closed)
+            {
+                baglanti.Open();
+            }
+
+            SqlCommand c = new SqlCommand("select ['BX-Books'].[Book-Title] from ['BX-Books'] inner join ['BX-Book-Ratings'] on ['BX-Book-Ratings'].ISBN = ['BX-Books'].ISBN  where ['BX-Book-Ratings'].[User-ID]= '" +id + "' order by ['BX-Book-Ratings'].[User-ID]", baglanti);
+            List<SeninOyladıkların> f2 = new List<SeninOyladıkların>();
+            SqlDataReader myReader = null;
+
+            SqlDataAdapter adp = new SqlDataAdapter(c);
+            myReader = c.ExecuteReader();
+            while (myReader.Read())
+            {
+                SeninOyladıkların so = new SeninOyladıkların();
+                //düzenlenecek
+                so.booktitle = (myReader["Book-Title"].ToString());
+                
+                f2.Add(so);
+
+            }
+            baglanti.Close();
+            int a = f2.Count;
+            if (a==1)
+            {
+                label83.Text = f2[0].booktitle.ToString();
+            }
+            if (a==2)
+            {
+                label84.Text = f2[1].booktitle.ToString();
+            }
+            if (a==3)
+            {
+                label85.Text = f2[2].booktitle.ToString();
+            }
+            if (a==4)
+            {
+                label86.Text = f2[3].booktitle.ToString();
+            }
+            if (a==5)
+            {
+                label87.Text = f2[4].booktitle.ToString();
+            }
+            if (a==6)
+            {
+                label88.Text = f2[5].booktitle.ToString();
+            }
+            if (a==7)
+            {
+                label89.Text = f2[6].booktitle.ToString();
+            }
+            if (a==8)
+            {
+                label90.Text = f2[7].booktitle.ToString();
+            }
+            if (a==9)
+            {
+                label91.Text = f2[8].booktitle.ToString();
+            }
+            if (a==10)
+            {
+                label92.Text = f2[9].booktitle.ToString();
+            }
+            
+
+
+           
+
+
+            
+
+        }
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -228,6 +303,7 @@ namespace YazLab1
             Popular();
             TopTen();
             kontrol();
+            SOyladıkların();
         
         }
 
@@ -300,7 +376,7 @@ namespace YazLab1
 
         private void UserMainPage_FormClosing(object sender, FormClosingEventArgs e)
         {
-            MessageBox.Show("Goodbye");
+            
             Application.Exit();
         }
     }
