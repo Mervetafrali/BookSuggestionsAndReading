@@ -40,7 +40,7 @@ namespace YazLab1
         {
             InitializeComponent();
         }
-
+        Label[] _Labels = new Label[20];
         SqlConnection baglanti = new SqlConnection("Data Source = MTAFRALI\\SQLEXPRESS; Initial Catalog = bb; Integrated Security = true");
 
         void KitaplariGetir()
@@ -342,14 +342,27 @@ namespace YazLab1
         private void UserMainPage_Load(object sender, EventArgs e)
         {
             SqlConnection baglanti = new SqlConnection("Data Source = MTAFRALI\\SQLEXPRESS; Initial Catalog = YazLab1; Integrated Security = true");
-
+            kontrol();
             KitaplariGetir();
             LastAdditionBring();
             Popular();
             TopTen();
-            kontrol();
+            
             SOyladıkların();
-        
+            _Labels[0] = this.label94;
+            _Labels[1] = this.label95;
+            _Labels[2] = this.label96;
+            _Labels[3] = this.label97;
+            _Labels[4] = this.label98;
+            _Labels[5] = this.label99;
+            _Labels[6] = this.label100;
+            _Labels[7] = this.label101;
+            _Labels[8] = this.label102;
+            _Labels[9] = this.label103;
+            
+
+
+
         }
 
         private void tabPage3_Click(object sender, EventArgs e)
@@ -423,6 +436,11 @@ namespace YazLab1
         {
             
             Application.Exit();
+        }
+
+        private void tabPage5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
