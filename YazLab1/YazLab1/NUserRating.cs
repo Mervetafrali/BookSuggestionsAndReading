@@ -96,6 +96,7 @@ namespace YazLab1
             {
                 this.Hide();
                 UserMainPage page2 = new UserMainPage();
+                    page2.id = id;
                 page2.ShowDialog();
             }
                 

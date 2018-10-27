@@ -347,8 +347,8 @@ namespace YazLab1
             LastAdditionBring();
             Popular();
             TopTen();
-            
             SOyladıkların();
+            
             _Labels[0] = this.label94;
             _Labels[1] = this.label95;
             _Labels[2] = this.label96;
@@ -441,6 +441,11 @@ namespace YazLab1
         private void tabPage5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+            SOyladıkların();
         }
     }
 }
