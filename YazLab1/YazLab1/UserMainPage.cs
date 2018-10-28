@@ -36,12 +36,16 @@ namespace YazLab1
             public string busr;
             
         }
+        public class Oneri
+        {
+            public string booktitle;
+        }
         public UserMainPage()
         {
             InitializeComponent();
         }
         Label[] _Labels = new Label[20];
-        SqlConnection baglanti = new SqlConnection("Data Source = MTAFRALI\\SQLEXPRESS; Initial Catalog = bb; Integrated Security = true");
+        SqlConnection baglanti = new SqlConnection("Data Source = MSI; Initial Catalog = yl1; Integrated Security = true");
 
         void KitaplariGetir()
         {
@@ -199,7 +203,7 @@ namespace YazLab1
         {
 
                 var connection = Database.GetConnection();
-                var stmt = new SqlCommand("SELECT COUNT([Book-Rating]) FROM[bb].[dbo].['BX-Book-Ratings'] where['BX-Book-Ratings'].[User-ID] ='" +id + "' or ['BX-Book-Ratings'].[User-ID]>278859");
+                var stmt = new SqlCommand("SELECT COUNT([Book-Rating]) FROM[yl1].[dbo].['BX-Book-Ratings'] where['BX-Book-Ratings'].[User-ID] ='" +id + "' or ['BX-Book-Ratings'].[User-ID]>278859");
                 int count = 0;
                 stmt.Connection = connection;
                 connection.Open();
@@ -334,20 +338,144 @@ namespace YazLab1
             
 
         }
+        /*
+        void Onerilenler()
+        {
+            if (baglanti.State == ConnectionState.Closed)
+            {
+                baglanti.Open();
+            }
+
+            SqlCommand c = new SqlCommand("select top 5 ['BX-Books'].[Book-Title] from ['BX-Books'] where ['BX-Books'].ISBN in (select['BX-Book-Ratings'].ISBN from ['BX-Book-Ratings'] where ['BX-Book-Ratings'].[User - ID] in (select['BX-Book-Ratings'].[User - ID] from ['BX-Book-Ratings'] where ['BX-Book-Ratings'].ISBN in (select top 1['BX-Books'].ISBN from dbo.['BX-Books'] inner join dbo.['BX-Book-Ratings'] on dbo.['BX-Book-Ratings'].ISBN = dbo.['BX-Books'].ISBN where ['BX-Book-Ratings'].[User - ID] = '" + id + "' order by dbo.['BX-Book-Ratings'].[Book - Rating] desc)))", baglanti);
+            SqlDataAdapter a = new SqlDataAdapter(c);
+            List<Oneri> oneri = new List<Oneri>();
+            SqlDataReader myReader = null;
+            SqlDataAdapter adp = new SqlDataAdapter(c);
+            myReader = c.ExecuteReader();
+            while (myReader.Read())
+            {
+                Oneri f = new Oneri();
+                f.booktitle = (myReader["Book-Title"].ToString());
+                oneri.Add(f);
+
+            }
+            baglanti.Close();
+
+            int x = oneri.Count();
+            
+            if(x !=1 && x != 2 && x != 3 && x != 4 && x != 5 && x != 6 && x != 7 && x != 8 && x != 9 && x != 10)
+            {
+                TopTen();
+            }
+            if (x == 1)
+            {
+                label93.Text = oneri[0].booktitle.ToString();
+            }
+            if (x == 2)
+            {
+                label93.Text = oneri[0].booktitle.ToString();
+                label104.Text = oneri[1].booktitle.ToString();
+            }
+            if (x == 3)
+            {
+                label93.Text = oneri[0].booktitle.ToString();
+                label104.Text = oneri[1].booktitle.ToString();
+                label105.Text = oneri[2].booktitle.ToString();
+            }
+            if (x == 4)
+            {
+                label93.Text = oneri[0].booktitle.ToString();
+                label104.Text = oneri[1].booktitle.ToString();
+                label105.Text = oneri[2].booktitle.ToString();
+                label106.Text = oneri[3].booktitle.ToString();
+            }
+            if (x == 5)
+            {
+                label93.Text = oneri[0].booktitle.ToString();
+                label104.Text = oneri[1].booktitle.ToString();
+                label105.Text = oneri[2].booktitle.ToString();
+                label106.Text = oneri[3].booktitle.ToString();
+                label107.Text = oneri[4].booktitle.ToString();
+            }
+            if (x == 6)
+            {
+                label93.Text = oneri[0].booktitle.ToString();
+                label104.Text = oneri[1].booktitle.ToString();
+                label105.Text = oneri[2].booktitle.ToString();
+                label106.Text = oneri[3].booktitle.ToString();
+                label107.Text = oneri[4].booktitle.ToString();
+                label108.Text = oneri[5].booktitle.ToString();
+            }
+            if (x == 7)
+            {
+                label93.Text = oneri[0].booktitle.ToString();
+                label104.Text = oneri[1].booktitle.ToString();
+                label105.Text = oneri[2].booktitle.ToString();
+                label106.Text = oneri[3].booktitle.ToString();
+                label107.Text = oneri[4].booktitle.ToString();
+                label108.Text = oneri[5].booktitle.ToString();
+                label109.Text = oneri[6].booktitle.ToString();
+            }
+            if (x == 8)
+            {
+                label93.Text = oneri[0].booktitle.ToString();
+                label104.Text = oneri[1].booktitle.ToString();
+                label105.Text = oneri[2].booktitle.ToString();
+                label106.Text = oneri[3].booktitle.ToString();
+                label107.Text = oneri[4].booktitle.ToString();
+                label108.Text = oneri[5].booktitle.ToString();
+                label109.Text = oneri[6].booktitle.ToString();
+                label110.Text = oneri[7].booktitle.ToString();
+            }
+            if (x == 9)
+            {
+                label93.Text = oneri[0].booktitle.ToString();
+                label104.Text = oneri[1].booktitle.ToString();
+                label105.Text = oneri[2].booktitle.ToString();
+                label106.Text = oneri[3].booktitle.ToString();
+                label107.Text = oneri[4].booktitle.ToString();
+                label108.Text = oneri[5].booktitle.ToString();
+                label109.Text = oneri[6].booktitle.ToString();
+                label110.Text = oneri[7].booktitle.ToString();
+                label111.Text = oneri[8].booktitle.ToString();
+            }
+            if (x == 10)
+            {
+                label93.Text = oneri[0].booktitle.ToString();
+                label104.Text = oneri[1].booktitle.ToString();
+                label105.Text = oneri[2].booktitle.ToString();
+                label106.Text = oneri[3].booktitle.ToString();
+                label107.Text = oneri[4].booktitle.ToString();
+                label108.Text = oneri[5].booktitle.ToString();
+                label109.Text = oneri[6].booktitle.ToString();
+                label110.Text = oneri[7].booktitle.ToString();
+                label111.Text = oneri[8].booktitle.ToString();
+                label112.Text = oneri[9].booktitle.ToString();
+            }
+
+
+
+            baglanti.Close();
+
+        }
+        */
+        
         private void label1_Click(object sender, EventArgs e)
         {
-
+            listBox1.Items.Add(label83.Text);
+         
         }
 
         private void UserMainPage_Load(object sender, EventArgs e)
         {
-            SqlConnection baglanti = new SqlConnection("Data Source = MTAFRALI\\SQLEXPRESS; Initial Catalog = YazLab1; Integrated Security = true");
+            SqlConnection baglanti = new SqlConnection("Data Source = MSI; Initial Catalog = yl1; Integrated Security = true");
             kontrol();
             KitaplariGetir();
             LastAdditionBring();
             Popular();
             TopTen();
             SOyladıkların();
+            /*Onerilenler();*/
             
             _Labels[0] = this.label94;
             _Labels[1] = this.label95;
@@ -377,7 +505,7 @@ namespace YazLab1
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            SqlConnection baglanti = new SqlConnection("Data Source = MTAFRALI\\SQLEXPRESS; Initial Catalog = bb; Integrated Security = true");
+            SqlConnection baglanti = new SqlConnection("Data Source = MSI; Initial Catalog = yl1; Integrated Security = true");
 
         }
 
@@ -446,6 +574,167 @@ namespace YazLab1
         private void tabPage2_Click(object sender, EventArgs e)
         {
             SOyladıkların();
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+            
+        }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void label93_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Add(label93.Text);
+        }
+
+        private void label104_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Add(label104.Text);
+        }
+
+        private void label105_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Add(label105.Text);
+        }
+
+        private void label106_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Add(label106.Text);
+        }
+
+        private void label107_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Add(label107.Text);
+        }
+
+        private void label108_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Add(label108.Text);
+        }
+
+        private void label109_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Add(label109.Text);
+        }
+
+        private void label110_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Add(label110.Text);
+        }
+
+        private void label111_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Add(label111.Text);
+        }
+
+        private void label112_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Add(label112.Text);
+        }
+
+        private void label92_ClientSizeChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label85_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void label83_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label85_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label83_Click_1(object sender, EventArgs e)
+        {
+            listBox1.Items.Add(label83.Text);
+
+        }
+
+        private void label84_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Add(label84.Text);
+
+        }
+
+        private void label85_Click_1(object sender, EventArgs e)
+        {
+            listBox1.Items.Add(label85.Text);
+
+        }
+
+        private void label86_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Add(label86.Text);
+
+        }
+
+        private void label87_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Add(label87.Text);
+
+        }
+
+        private void label88_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Add(label88.Text);
+
+        }
+
+        private void label89_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Add(label89.Text);
+
+        }
+
+        private void label90_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Add(label90.Text);
+
+        }
+
+        private void label91_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Add(label91.Text);
+
+        }
+
+        private void label92_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Add(label92.Text);
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+           
+
+            try
+            {
+
+                Process.Start("08333696.pdf");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Could not open the file.", "Error");
+            }
+
         }
     }
 }
