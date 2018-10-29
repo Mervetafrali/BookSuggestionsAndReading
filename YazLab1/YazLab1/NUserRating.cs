@@ -18,7 +18,7 @@ namespace YazLab1
             InitializeComponent();
         }
         public string id;
-        SqlConnection baglanti = new SqlConnection("Data Source = MSI; Initial Catalog =yl1; Integrated Security = true");
+        SqlConnection baglanti = new SqlConnection("Data Source = MTAFRALI\\SQLEXPRESS; Initial Catalog = bb; Integrated Security = true");
         int counter = 0;
         void kisiGetir()
         {

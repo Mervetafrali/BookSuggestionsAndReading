@@ -76,5 +76,10 @@ namespace YazLab1
         {
             passwordtxt.PasswordChar = '*';
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

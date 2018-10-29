@@ -207,5 +207,11 @@
       <Isolated>False</Isolated>
     </COMReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e5cd5b0d3716cf8d44fee96ca5a184e7.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6cc9e4c2053f1eabae0f23de3e71b708.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

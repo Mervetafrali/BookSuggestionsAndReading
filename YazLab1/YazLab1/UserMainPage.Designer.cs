@@ -88,6 +88,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.lblPublisher = new System.Windows.Forms.Label();
             this.lblyop = new System.Windows.Forms.Label();
             this.lblBookAuthor = new System.Windows.Forms.Label();
@@ -128,7 +129,6 @@
             this.label104 = new System.Windows.Forms.Label();
             this.label93 = new System.Windows.Forms.Label();
             this.label81 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -758,6 +758,16 @@
             this.tabPage3.UseVisualStyleBackColor = true;
             this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(26, 450);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 24;
+            this.button1.Text = "PDF";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // lblPublisher
             // 
             this.lblPublisher.AutoSize = true;
@@ -1160,16 +1170,6 @@
             this.label81.Size = new System.Drawing.Size(218, 32);
             this.label81.TabIndex = 2;
             this.label81.Text = "Recommended";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(26, 450);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "PDF";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // UserMainPage
             // 

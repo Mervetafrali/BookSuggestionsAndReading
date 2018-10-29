@@ -45,7 +45,8 @@ namespace YazLab1
             InitializeComponent();
         }
         Label[] _Labels = new Label[20];
-        SqlConnection baglanti = new SqlConnection("Data Source = MSI; Initial Catalog = yl1; Integrated Security = true");
+        SqlConnection baglanti = new SqlConnection("Data Source = MTAFRALI\\SQLEXPRESS; Initial Catalog = bb; Integrated Security = true");
+
 
         void KitaplariGetir()
         {
@@ -149,6 +150,56 @@ namespace YazLab1
             baglanti.Close();
 
         }
+        void tten()
+        {
+            if (baglanti.State == ConnectionState.Closed)
+            {
+                baglanti.Open();
+            }
+
+            SqlCommand c = new SqlCommand(" select top 10 AVG(['BX-Book-Ratings'].[Book-Rating]) as ortalama_oy, ['BX-Books'].[Book-Title] from ['BX-Book-Ratings'] inner join['BX-Books'] on ['BX-Book-Ratings'].ISBN = ['BX-Books'].ISBN  group by['BX-Books'].[Book-Title]  order by ortalama_oy desc", baglanti);
+            List<topten> fruits = new List<topten>();
+            SqlDataReader myReader = null;
+
+            SqlDataAdapter adp = new SqlDataAdapter(c);
+            myReader = c.ExecuteReader();
+            while (myReader.Read())
+            {
+                topten f = new topten();
+                //düzenlenecek
+                f.bookauthor = (myReader["ortalama_oy"].ToString());
+                f.booktitle = (myReader["Book-Title"].ToString());
+                fruits.Add(f);
+
+            }
+            baglanti.Close();
+            for (int i = 0; i < 10; i++)
+            {
+                label93.Text = fruits[0].booktitle.ToString();
+
+                label104.Text = fruits[1].booktitle.ToString();
+
+                label105.Text = fruits[2].booktitle.ToString();
+
+                label106.Text = fruits[3].booktitle.ToString();
+
+                label107.Text = fruits[4].booktitle.ToString();
+
+                label108.Text = fruits[5].booktitle.ToString();
+
+                label109.Text = fruits[6].booktitle.ToString();
+
+                label110.Text = fruits[7].booktitle.ToString();
+
+                label111.Text = fruits[8].booktitle.ToString();
+
+                label112.Text = fruits[9].booktitle.ToString();
+
+
+
+            }
+
+        }
         void TopTen()
         {
             if (baglanti.State == ConnectionState.Closed)
@@ -203,7 +254,7 @@ namespace YazLab1
         {
 
                 var connection = Database.GetConnection();
-                var stmt = new SqlCommand("SELECT COUNT([Book-Rating]) FROM[yl1].[dbo].['BX-Book-Ratings'] where['BX-Book-Ratings'].[User-ID] ='" +id + "' or ['BX-Book-Ratings'].[User-ID]>278859");
+                var stmt = new SqlCommand("SELECT COUNT([Book-Rating]) FROM[bb].[dbo].['BX-Book-Ratings'] where['BX-Book-Ratings'].[User-ID] ='" +id + "' or ['BX-Book-Ratings'].[User-ID]>278859");
                 int count = 0;
                 stmt.Connection = connection;
                 connection.Open();
@@ -365,7 +416,7 @@ namespace YazLab1
             
             if(x ==0)
             {
-                TopTen();
+                tten();
             }
             if (x == 1)
             {
@@ -468,7 +519,7 @@ namespace YazLab1
 
         private void UserMainPage_Load(object sender, EventArgs e)
         {
-            SqlConnection baglanti = new SqlConnection("Data Source = MSI; Initial Catalog = yl1; Integrated Security = true");
+            SqlConnection baglanti = new SqlConnection("Data Source = MTAFRALI\\SQLEXPRESS; Initial Catalog = bb; Integrated Security = true");
             kontrol();
             KitaplariGetir();
             LastAdditionBring();
@@ -477,7 +528,7 @@ namespace YazLab1
             SOyladıkların();
             Onerilenler();
             
-            _Labels[0] = this.label94;
+            /*_Labels[0] = this.label94;
             _Labels[1] = this.label95;
             _Labels[2] = this.label96;
             _Labels[3] = this.label97;
@@ -486,7 +537,7 @@ namespace YazLab1
             _Labels[6] = this.label100;
             _Labels[7] = this.label101;
             _Labels[8] = this.label102;
-            _Labels[9] = this.label103;
+            _Labels[9] = this.label103;*/
             
 
 
