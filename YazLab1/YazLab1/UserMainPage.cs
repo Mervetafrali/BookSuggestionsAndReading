@@ -45,7 +45,7 @@ namespace YazLab1
             InitializeComponent();
         }
         Label[] _Labels = new Label[20];
-        SqlConnection baglanti = new SqlConnection("Data Source = MTAFRALI\\SQLEXPRESS; Initial Catalog = bb; Integrated Security = true");
+        SqlConnection baglanti = new SqlConnection("Data Source = MSI; Initial Catalog = yl1; Integrated Security = true");
 
 
         void KitaplariGetir()
@@ -254,7 +254,7 @@ namespace YazLab1
         {
 
                 var connection = Database.GetConnection();
-                var stmt = new SqlCommand("SELECT COUNT([Book-Rating]) FROM[bb].[dbo].['BX-Book-Ratings'] where['BX-Book-Ratings'].[User-ID] ='" +id + "' or ['BX-Book-Ratings'].[User-ID]>278859");
+                var stmt = new SqlCommand("SELECT COUNT([Book-Rating]) FROM[yl1].[dbo].['BX-Book-Ratings'] where['BX-Book-Ratings'].[User-ID] ='" +id + "' or ['BX-Book-Ratings'].[User-ID]>278859");
                 int count = 0;
                 stmt.Connection = connection;
                 connection.Open();
@@ -519,7 +519,7 @@ namespace YazLab1
 
         private void UserMainPage_Load(object sender, EventArgs e)
         {
-            SqlConnection baglanti = new SqlConnection("Data Source = MTAFRALI\\SQLEXPRESS; Initial Catalog = bb; Integrated Security = true");
+            SqlConnection baglanti = new SqlConnection("Data Source = MSI; Initial Catalog = yl1; Integrated Security = true");
             kontrol();
             KitaplariGetir();
             LastAdditionBring();
@@ -1009,6 +1009,11 @@ namespace YazLab1
             {
                 MessageBox.Show("Could not open the file.", "Error");
             }
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            listBox1.Items.RemoveAt(listBox1.SelectedIndex);
         }
     }
 }
