@@ -338,7 +338,7 @@ namespace YazLab1
             
 
         }
-        /*
+        
         void Onerilenler()
         {
             if (baglanti.State == ConnectionState.Closed)
@@ -346,7 +346,7 @@ namespace YazLab1
                 baglanti.Open();
             }
 
-            SqlCommand c = new SqlCommand("select top 5 ['BX-Books'].[Book-Title] from ['BX-Books'] where ['BX-Books'].ISBN in (select['BX-Book-Ratings'].ISBN from ['BX-Book-Ratings'] where ['BX-Book-Ratings'].[User - ID] in (select['BX-Book-Ratings'].[User - ID] from ['BX-Book-Ratings'] where ['BX-Book-Ratings'].ISBN in (select top 1['BX-Books'].ISBN from dbo.['BX-Books'] inner join dbo.['BX-Book-Ratings'] on dbo.['BX-Book-Ratings'].ISBN = dbo.['BX-Books'].ISBN where ['BX-Book-Ratings'].[User - ID] = '" + id + "' order by dbo.['BX-Book-Ratings'].[Book - Rating] desc)))", baglanti);
+            SqlCommand c = new SqlCommand("select top 10 ['BX-Books'].[Book-Title] from ['BX-Books'] where ['BX-Books'].ISBN in (select['BX-Book-Ratings'].ISBN from ['BX-Book-Ratings'] where ['BX-Book-Ratings'].[User-ID] in (select['BX-Book-Ratings'].[User-ID] from ['BX-Book-Ratings'] where ['BX-Book-Ratings'].ISBN in (select top 1['BX-Books'].ISBN from dbo.['BX-Books'] inner join dbo.['BX-Book-Ratings'] on dbo.['BX-Book-Ratings'].ISBN = dbo.['BX-Books'].ISBN where ['BX-Book-Ratings'].[User-ID] = '" + id + "' order by dbo.['BX-Book-Ratings'].[Book-Rating] desc)))", baglanti);
             SqlDataAdapter a = new SqlDataAdapter(c);
             List<Oneri> oneri = new List<Oneri>();
             SqlDataReader myReader = null;
@@ -363,7 +363,7 @@ namespace YazLab1
 
             int x = oneri.Count();
             
-            if(x !=1 && x != 2 && x != 3 && x != 4 && x != 5 && x != 6 && x != 7 && x != 8 && x != 9 && x != 10)
+            if(x ==0)
             {
                 TopTen();
             }
@@ -458,7 +458,7 @@ namespace YazLab1
             baglanti.Close();
 
         }
-        */
+        
         
         private void label1_Click(object sender, EventArgs e)
         {
@@ -475,7 +475,7 @@ namespace YazLab1
             Popular();
             TopTen();
             SOyladıkların();
-            /*Onerilenler();*/
+            Onerilenler();
             
             _Labels[0] = this.label94;
             _Labels[1] = this.label95;
@@ -723,18 +723,145 @@ namespace YazLab1
 
         private void button2_Click(object sender, EventArgs e)
         {
+            int a = listBox1.SelectedIndex;
+
+
+            if (a == 0)
+            {
+                try
+                {
+
+                    Process.Start("1.pdf");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Could not open the file.", "Error");
+                }
+
+            }
+            if (a == 1)
+            {
+                try
+                {
+
+                    Process.Start("2.pdf");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Could not open the file.", "Error");
+                }
+
+            }
+            if (a == 2)
+            {
+                try
+                {
+
+                    Process.Start("3.pdf");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Could not open the file.", "Error");
+                }
+
+            }
+            if (a == 3)
+            {
+                try
+                {
+
+                    Process.Start("4.pdf");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Could not open the file.", "Error");
+                }
+
+            }
+            if (a == 4)
+            {
+                try
+                {
+
+                    Process.Start("5.pdf");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Could not open the file.", "Error");
+                }
+
+            }
+            if (a == 5)
+            {
+                try
+                {
+
+                    Process.Start("6.pdf");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Could not open the file.", "Error");
+                }
+
+            }
+            if (a== 6)
+            {
+                try
+                {
+
+                    Process.Start("7.pdf");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Could not open the file.", "Error");
+                }
+
+            }
+            if (a == 7)
+            {
+                try
+                {
+
+                    Process.Start("8.pdf");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Could not open the file.", "Error");
+                }
+
+            }
+            if (a == 8)
+            {
+                try
+                {
+
+                    Process.Start("9.pdf");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Could not open the file.", "Error");
+                }
+
+            }
+            if (a == 9)
+            {
+                try
+                {
+
+                    Process.Start("10.pdf");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Could not open the file.", "Error");
+                }
+
+            }
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
            
-
-            try
-            {
-
-                Process.Start("08333696.pdf");
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Could not open the file.", "Error");
-            }
-
         }
     }
 }

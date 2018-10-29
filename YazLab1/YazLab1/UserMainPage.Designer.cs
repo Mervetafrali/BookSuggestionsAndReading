@@ -101,9 +101,20 @@
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label113 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.label92 = new System.Windows.Forms.Label();
+            this.label91 = new System.Windows.Forms.Label();
+            this.label90 = new System.Windows.Forms.Label();
+            this.label89 = new System.Windows.Forms.Label();
+            this.label88 = new System.Windows.Forms.Label();
+            this.label87 = new System.Windows.Forms.Label();
+            this.label86 = new System.Windows.Forms.Label();
+            this.label85 = new System.Windows.Forms.Label();
+            this.label84 = new System.Windows.Forms.Label();
+            this.label83 = new System.Windows.Forms.Label();
             this.label82 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label112 = new System.Windows.Forms.Label();
@@ -152,16 +163,6 @@
             this.label100 = new System.Windows.Forms.Label();
             this.label101 = new System.Windows.Forms.Label();
             this.label102 = new System.Windows.Forms.Label();
-            this.label83 = new System.Windows.Forms.Label();
-            this.label84 = new System.Windows.Forms.Label();
-            this.label85 = new System.Windows.Forms.Label();
-            this.label86 = new System.Windows.Forms.Label();
-            this.label87 = new System.Windows.Forms.Label();
-            this.label88 = new System.Windows.Forms.Label();
-            this.label89 = new System.Windows.Forms.Label();
-            this.label90 = new System.Windows.Forms.Label();
-            this.label91 = new System.Windows.Forms.Label();
-            this.label92 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -907,6 +908,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label113);
             this.tabPage2.Controls.Add(this.button2);
             this.tabPage2.Controls.Add(this.listBox1);
             this.tabPage2.Controls.Add(this.panel6);
@@ -919,6 +921,15 @@
             this.tabPage2.Text = "Your Page";
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
+            // 
+            // label113
+            // 
+            this.label113.AutoSize = true;
+            this.label113.Location = new System.Drawing.Point(1183, 29);
+            this.label113.Name = "label113";
+            this.label113.Size = new System.Drawing.Size(162, 17);
+            this.label113.TabIndex = 31;
+            this.label113.Text = "Select 10 books to read ";
             // 
             // button2
             // 
@@ -934,10 +945,11 @@
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(1133, 10);
+            this.listBox1.Location = new System.Drawing.Point(1133, 58);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(568, 596);
+            this.listBox1.Size = new System.Drawing.Size(568, 548);
             this.listBox1.TabIndex = 2;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // panel6
             // 
@@ -957,6 +969,96 @@
             this.panel6.Size = new System.Drawing.Size(480, 554);
             this.panel6.TabIndex = 1;
             this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
+            // 
+            // label92
+            // 
+            this.label92.AutoSize = true;
+            this.label92.Location = new System.Drawing.Point(74, 426);
+            this.label92.Name = "label92";
+            this.label92.Size = new System.Drawing.Size(0, 17);
+            this.label92.TabIndex = 13;
+            this.label92.Click += new System.EventHandler(this.label92_Click);
+            // 
+            // label91
+            // 
+            this.label91.AutoSize = true;
+            this.label91.Location = new System.Drawing.Point(74, 387);
+            this.label91.Name = "label91";
+            this.label91.Size = new System.Drawing.Size(0, 17);
+            this.label91.TabIndex = 12;
+            this.label91.Click += new System.EventHandler(this.label91_Click);
+            // 
+            // label90
+            // 
+            this.label90.AutoSize = true;
+            this.label90.Location = new System.Drawing.Point(74, 345);
+            this.label90.Name = "label90";
+            this.label90.Size = new System.Drawing.Size(0, 17);
+            this.label90.TabIndex = 11;
+            this.label90.Click += new System.EventHandler(this.label90_Click);
+            // 
+            // label89
+            // 
+            this.label89.AutoSize = true;
+            this.label89.Location = new System.Drawing.Point(74, 306);
+            this.label89.Name = "label89";
+            this.label89.Size = new System.Drawing.Size(0, 17);
+            this.label89.TabIndex = 10;
+            this.label89.Click += new System.EventHandler(this.label89_Click);
+            // 
+            // label88
+            // 
+            this.label88.AutoSize = true;
+            this.label88.Location = new System.Drawing.Point(74, 268);
+            this.label88.Name = "label88";
+            this.label88.Size = new System.Drawing.Size(0, 17);
+            this.label88.TabIndex = 9;
+            this.label88.Click += new System.EventHandler(this.label88_Click);
+            // 
+            // label87
+            // 
+            this.label87.AutoSize = true;
+            this.label87.Location = new System.Drawing.Point(74, 232);
+            this.label87.Name = "label87";
+            this.label87.Size = new System.Drawing.Size(0, 17);
+            this.label87.TabIndex = 8;
+            this.label87.Click += new System.EventHandler(this.label87_Click);
+            // 
+            // label86
+            // 
+            this.label86.AutoSize = true;
+            this.label86.Location = new System.Drawing.Point(74, 196);
+            this.label86.Name = "label86";
+            this.label86.Size = new System.Drawing.Size(0, 17);
+            this.label86.TabIndex = 7;
+            this.label86.Click += new System.EventHandler(this.label86_Click);
+            // 
+            // label85
+            // 
+            this.label85.AutoSize = true;
+            this.label85.Location = new System.Drawing.Point(74, 160);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(0, 17);
+            this.label85.TabIndex = 6;
+            this.label85.Click += new System.EventHandler(this.label85_Click_1);
+            // 
+            // label84
+            // 
+            this.label84.AutoSize = true;
+            this.label84.Location = new System.Drawing.Point(72, 123);
+            this.label84.Name = "label84";
+            this.label84.Size = new System.Drawing.Size(0, 17);
+            this.label84.TabIndex = 5;
+            this.label84.Click += new System.EventHandler(this.label84_Click);
+            // 
+            // label83
+            // 
+            this.label83.AutoSize = true;
+            this.label83.Location = new System.Drawing.Point(71, 88);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(0, 17);
+            this.label83.TabIndex = 4;
+            this.label83.Click += new System.EventHandler(this.label83_Click_1);
             // 
             // label82
             // 
@@ -1446,96 +1548,6 @@
             this.label102.TabIndex = 31;
             this.label102.Text = "label102";
             // 
-            // label83
-            // 
-            this.label83.AutoSize = true;
-            this.label83.Location = new System.Drawing.Point(71, 88);
-            this.label83.Name = "label83";
-            this.label83.Size = new System.Drawing.Size(0, 17);
-            this.label83.TabIndex = 4;
-            this.label83.Click += new System.EventHandler(this.label83_Click_1);
-            // 
-            // label84
-            // 
-            this.label84.AutoSize = true;
-            this.label84.Location = new System.Drawing.Point(72, 123);
-            this.label84.Name = "label84";
-            this.label84.Size = new System.Drawing.Size(0, 17);
-            this.label84.TabIndex = 5;
-            this.label84.Click += new System.EventHandler(this.label84_Click);
-            // 
-            // label85
-            // 
-            this.label85.AutoSize = true;
-            this.label85.Location = new System.Drawing.Point(74, 160);
-            this.label85.Name = "label85";
-            this.label85.Size = new System.Drawing.Size(0, 17);
-            this.label85.TabIndex = 6;
-            this.label85.Click += new System.EventHandler(this.label85_Click_1);
-            // 
-            // label86
-            // 
-            this.label86.AutoSize = true;
-            this.label86.Location = new System.Drawing.Point(74, 196);
-            this.label86.Name = "label86";
-            this.label86.Size = new System.Drawing.Size(0, 17);
-            this.label86.TabIndex = 7;
-            this.label86.Click += new System.EventHandler(this.label86_Click);
-            // 
-            // label87
-            // 
-            this.label87.AutoSize = true;
-            this.label87.Location = new System.Drawing.Point(74, 232);
-            this.label87.Name = "label87";
-            this.label87.Size = new System.Drawing.Size(0, 17);
-            this.label87.TabIndex = 8;
-            this.label87.Click += new System.EventHandler(this.label87_Click);
-            // 
-            // label88
-            // 
-            this.label88.AutoSize = true;
-            this.label88.Location = new System.Drawing.Point(74, 268);
-            this.label88.Name = "label88";
-            this.label88.Size = new System.Drawing.Size(0, 17);
-            this.label88.TabIndex = 9;
-            this.label88.Click += new System.EventHandler(this.label88_Click);
-            // 
-            // label89
-            // 
-            this.label89.AutoSize = true;
-            this.label89.Location = new System.Drawing.Point(74, 306);
-            this.label89.Name = "label89";
-            this.label89.Size = new System.Drawing.Size(0, 17);
-            this.label89.TabIndex = 10;
-            this.label89.Click += new System.EventHandler(this.label89_Click);
-            // 
-            // label90
-            // 
-            this.label90.AutoSize = true;
-            this.label90.Location = new System.Drawing.Point(74, 345);
-            this.label90.Name = "label90";
-            this.label90.Size = new System.Drawing.Size(0, 17);
-            this.label90.TabIndex = 11;
-            this.label90.Click += new System.EventHandler(this.label90_Click);
-            // 
-            // label91
-            // 
-            this.label91.AutoSize = true;
-            this.label91.Location = new System.Drawing.Point(74, 387);
-            this.label91.Name = "label91";
-            this.label91.Size = new System.Drawing.Size(0, 17);
-            this.label91.TabIndex = 12;
-            this.label91.Click += new System.EventHandler(this.label91_Click);
-            // 
-            // label92
-            // 
-            this.label92.AutoSize = true;
-            this.label92.Location = new System.Drawing.Point(74, 426);
-            this.label92.Name = "label92";
-            this.label92.Size = new System.Drawing.Size(0, 17);
-            this.label92.TabIndex = 13;
-            this.label92.Click += new System.EventHandler(this.label92_Click);
-            // 
             // UserMainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1560,6 +1572,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -1709,5 +1722,6 @@
         private System.Windows.Forms.Label label85;
         private System.Windows.Forms.Label label84;
         private System.Windows.Forms.Label label83;
+        private System.Windows.Forms.Label label113;
     }
 }
