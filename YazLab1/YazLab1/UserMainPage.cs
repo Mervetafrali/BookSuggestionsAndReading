@@ -593,52 +593,92 @@ namespace YazLab1
 
         private void label93_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add(label93.Text);
+            int x = listBox1.Items.Count;
+            if (x <= 9)
+            {
+                listBox1.Items.Add(label93.Text);
+            }
         }
 
         private void label104_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add(label104.Text);
+            int x = listBox1.Items.Count;
+            if (x <= 9)
+            {
+                listBox1.Items.Add(label104.Text);
+            }
         }
 
         private void label105_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add(label105.Text);
+            int x = listBox1.Items.Count;
+            if (x <= 9)
+            {
+                listBox1.Items.Add(label105.Text);
+            }
         }
 
         private void label106_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add(label106.Text);
+            int x = listBox1.Items.Count;
+            if (x <= 9)
+            {
+                listBox1.Items.Add(label106.Text);
+            }
         }
 
         private void label107_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add(label107.Text);
+            int x = listBox1.Items.Count;
+            if (x <= 9)
+            {
+                listBox1.Items.Add(label107.Text);
+            }
         }
 
         private void label108_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add(label108.Text);
+            int x = listBox1.Items.Count;
+            if (x <= 9)
+            {
+                listBox1.Items.Add(label108.Text);
+            }
         }
 
         private void label109_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add(label109.Text);
+            int x = listBox1.Items.Count;
+            if (x <= 9)
+            {
+                listBox1.Items.Add(label109.Text);
+            }
         }
 
         private void label110_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add(label110.Text);
+            int x = listBox1.Items.Count;
+            if (x <= 9)
+            {
+                listBox1.Items.Add(label110.Text);
+            }
         }
 
         private void label111_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add(label111.Text);
+            int x = listBox1.Items.Count;
+            if (x <= 9)
+            {
+                listBox1.Items.Add(label111.Text);
+            }
         }
 
         private void label112_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add(label112.Text);
+            int x = listBox1.Items.Count;
+            if (x <= 9)
+            {
+                listBox1.Items.Add(label112.Text);
+            }
         }
 
         private void label92_ClientSizeChanged(object sender, EventArgs e)
@@ -663,62 +703,100 @@ namespace YazLab1
 
         private void label83_Click_1(object sender, EventArgs e)
         {
-            listBox1.Items.Add(label83.Text);
+            int x = listBox1.Items.Count;
+            if (x <= 9)
+            {
+                listBox1.Items.Add(label83.Text);
+            }
 
         }
 
         private void label84_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add(label84.Text);
+            int x = listBox1.Items.Count;
+            if (x <= 9)
+            {
+                listBox1.Items.Add(label84.Text);
+            }
 
         }
 
         private void label85_Click_1(object sender, EventArgs e)
         {
-            listBox1.Items.Add(label85.Text);
+            int x = listBox1.Items.Count;
+            if (x <= 9)
+            {
+                listBox1.Items.Add(label85.Text);
+            }
 
         }
 
         private void label86_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add(label86.Text);
+            int x = listBox1.Items.Count;
+            if (x <= 9)
+            {
+                listBox1.Items.Add(label86.Text);
+            }
 
         }
 
         private void label87_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add(label87.Text);
+            int x = listBox1.Items.Count;
+            if (x <= 9)
+            {
+                listBox1.Items.Add(label87.Text);
+            }
 
         }
 
         private void label88_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add(label88.Text);
-
+            int x = listBox1.Items.Count;
+            if (x <= 9)
+            {
+                listBox1.Items.Add(label88.Text);
+            }
         }
 
         private void label89_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add(label89.Text);
+            int x = listBox1.Items.Count;
+            if (x <= 9)
+            {
+                listBox1.Items.Add(label89.Text);
+            }
 
         }
 
         private void label90_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add(label90.Text);
+            int x = listBox1.Items.Count;
+            if (x <= 9)
+            {
+                listBox1.Items.Add(label90.Text);
+            }
 
         }
 
         private void label91_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add(label91.Text);
+            int x = listBox1.Items.Count;
+            if (x <= 9)
+            {
+                listBox1.Items.Add(label91.Text);
+            }
 
         }
 
         private void label92_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add(label92.Text);
-
+            int x = listBox1.Items.Count;
+            if (x <= 9)
+            {
+                listBox1.Items.Add(label92.Text);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -862,6 +940,24 @@ namespace YazLab1
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
            
+        }
+
+        private void tabPage4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+
+                Process.Start("1.pdf");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Could not open the file.", "Error");
+            }
         }
     }
 }
