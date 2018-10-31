@@ -19,7 +19,7 @@ namespace YazLab1
           
         }
         // baglanti nesnesi oluşturulur:
-        SqlConnection baglanti = new SqlConnection("Data Source = MSI; Initial Catalog = yl1; Integrated Security = true");
+        SqlConnection baglanti = new SqlConnection("Data Source = MTAFRALI\\SQLEXPRESS; Initial Catalog = bb; Integrated Security = true");
 
         int Id = 0;
         
@@ -137,7 +137,7 @@ namespace YazLab1
 
         private void AdminPage_Load(object sender, EventArgs e)
         {
-            SqlConnection baglanti = new SqlConnection("Data Source = MSI; Initial Catalog = yl1; Integrated Security = true");
+            SqlConnection baglanti = new SqlConnection("Data Source = MTAFRALI\\SQLEXPRESS; Initial Catalog = bb; Integrated Security = true");
             kisiGetir();
             kisiGetir2();
         }

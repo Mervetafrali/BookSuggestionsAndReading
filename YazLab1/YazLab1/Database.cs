@@ -13,7 +13,7 @@ namespace YazLab1
         {
             //DB ismi BXDB şifre olmadığından true oluyor
 
-            string connectionString = "Data Source = MSI; Initial Catalog = yl1;; Integrated Security = true";
+            string connectionString = "Data Source = MTAFRALI\\SQLEXPRESS; Initial Catalog = bb;; Integrated Security = true";
             return new SqlConnection(connectionString);
         }
     }

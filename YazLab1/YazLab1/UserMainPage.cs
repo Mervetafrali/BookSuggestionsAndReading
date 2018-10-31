@@ -19,6 +19,7 @@ namespace YazLab1
         {
             public string booktitle;
             public string bookauthor;
+            public string v;
         }
         public class popular
         {
@@ -45,7 +46,7 @@ namespace YazLab1
             InitializeComponent();
         }
         Label[] _Labels = new Label[20];
-        SqlConnection baglanti = new SqlConnection("Data Source = MSI; Initial Catalog = yl1; Integrated Security = true");
+        SqlConnection baglanti = new SqlConnection("Data Source = MTAFRALI\\SQLEXPRESS; Initial Catalog = bb; Integrated Security = true");
 
 
         void KitaplariGetir()
@@ -207,7 +208,7 @@ namespace YazLab1
                 baglanti.Open();
             }
 
-            SqlCommand c = new SqlCommand(" select top 10 AVG(['BX-Book-Ratings'].[Book-Rating]) as ortalama_oy, ['BX-Books'].[Book-Title] from ['BX-Book-Ratings'] inner join['BX-Books'] on ['BX-Book-Ratings'].ISBN = ['BX-Books'].ISBN  group by['BX-Books'].[Book-Title]  order by ortalama_oy desc", baglanti);
+            SqlCommand c = new SqlCommand(" select top 10 AVG(['BX-Book-Ratings'].[Book-Rating]) as ortalama_oy, ['BX-Books'].[Book-Title] , count(['BX-Book-Ratings'].[Book-Rating]) as kac_kisi_oyladi from['BX-Book-Ratings'] inner join['BX-Books'] on['BX-Book-Ratings'].ISBN = ['BX-Books'].ISBN group by['BX-Books'].[Book-Title] HAVING COUNT(*) > 10  order by ortalama_oy DESC", baglanti);
             List<topten> fruits = new List<topten>();
             SqlDataReader myReader = null;
           
@@ -219,13 +220,15 @@ namespace YazLab1
                 //düzenlenecek
                 f.booktitle = (myReader["ortalama_oy"].ToString());
                 f.bookauthor = (myReader["Book-Title"].ToString());
+                f.v= (myReader["kac_kisi_oyladi"].ToString());
                 fruits.Add(f);
                 
             }
             baglanti.Close();
-            for (int i = 0; i < 10; i++)
-            {
+         
+             
                 label9.Text = fruits[0].booktitle.ToString();
+                
                 label10.Text = fruits[0].bookauthor.ToString();
                 label11.Text = fruits[1].booktitle.ToString();
                 label12.Text = fruits[1].bookauthor.ToString();
@@ -247,20 +250,21 @@ namespace YazLab1
                 label28.Text = fruits[9].bookauthor.ToString();
                 
                 
-            }
+            
 
         }
         void kontrol()
         {
 
                 var connection = Database.GetConnection();
-                var stmt = new SqlCommand("SELECT COUNT([Book-Rating]) FROM[yl1].[dbo].['BX-Book-Ratings'] where['BX-Book-Ratings'].[User-ID] ='" +id + "' or ['BX-Book-Ratings'].[User-ID]>278859");
+                var stmt = new SqlCommand("SELECT COUNT([Book-Rating]) FROM[bb].[dbo].['BX-Book-Ratings'] where['BX-Book-Ratings'].[User-ID] ='" +id + "' or ['BX-Book-Ratings'].[User-ID]>278859");
                 int count = 0;
                 stmt.Connection = connection;
                 connection.Open();
-
+                int d = Int32.Parse(id);
                 count = Int32.Parse(stmt.ExecuteScalar().ToString());
-                if (count < 10)
+                
+                if (count < 10 )
                 {
                     NUserRating page1 = new NUserRating();
                     page1.id = id;
@@ -292,6 +296,13 @@ namespace YazLab1
                 
                 f2.Add(so);
 
+            }
+            if(f2.Count==0 && Int32.Parse(id) > 278859)
+            {
+                NUserRating page1 = new NUserRating();
+                page1.id = id;
+                page1.ShowDialog();
+                this.Hide();
             }
             baglanti.Close();
             int a = f2.Count;
@@ -519,7 +530,7 @@ namespace YazLab1
 
         private void UserMainPage_Load(object sender, EventArgs e)
         {
-            SqlConnection baglanti = new SqlConnection("Data Source = MSI; Initial Catalog = yl1; Integrated Security = true");
+            SqlConnection baglanti = new SqlConnection("Data Source = MTAFRALI\\SQLEXPRESS; Initial Catalog = bb; Integrated Security = true");
             kontrol();
             KitaplariGetir();
             LastAdditionBring();
@@ -556,7 +567,7 @@ namespace YazLab1
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            SqlConnection baglanti = new SqlConnection("Data Source = MSI; Initial Catalog = yl1; Integrated Security = true");
+            SqlConnection baglanti = new SqlConnection("Data Source = MTAFRALI\\SQLEXPRESS; Initial Catalog = bb; Integrated Security = true");
 
         }
 
