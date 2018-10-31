@@ -47,8 +47,6 @@ namespace YazLab1
         }
         Label[] _Labels = new Label[20];
         SqlConnection baglanti = new SqlConnection("Data Source = MTAFRALI\\SQLEXPRESS; Initial Catalog = bb; Integrated Security = true");
-
-
         void KitaplariGetir()
         {
             if(baglanti.State == ConnectionState.Closed)
@@ -255,26 +253,29 @@ namespace YazLab1
         }
         void kontrol()
         {
-
+            if (Int32.Parse(id)>278859)
+            {
                 var connection = Database.GetConnection();
-                var stmt = new SqlCommand("SELECT COUNT([Book-Rating]) FROM[bb].[dbo].['BX-Book-Ratings'] where['BX-Book-Ratings'].[User-ID] ='" +id + "' or ['BX-Book-Ratings'].[User-ID]>278859");
+                var stmt = new SqlCommand("SELECT COUNT([Book-Rating]) FROM[bb].[dbo].['BX-Book-Ratings'] where['BX-Book-Ratings'].[User-ID] ='" + id + "' and ['BX-Book-Ratings'].[User-ID]>278859");
                 int count = 0;
                 stmt.Connection = connection;
                 connection.Open();
-                int d = Int32.Parse(id);
+
                 count = Int32.Parse(stmt.ExecuteScalar().ToString());
-                
-                if (count < 10 )
-                {
+                 if (count < 10)
+                 {
+                    this.Hide();
                     NUserRating page1 = new NUserRating();
                     page1.id = id;
                     page1.ShowDialog();
                     this.Hide();
                 }
                 connection.Close();
-            
-            
-           }
+            }
+           
+
+
+        }
         void SOyladıkların()
         {
             if (baglanti.State == ConnectionState.Closed)
@@ -297,12 +298,9 @@ namespace YazLab1
                 f2.Add(so);
 
             }
-            if(f2.Count==0 && Int32.Parse(id) > 278859)
+            if(f2.Count==0)
             {
-                NUserRating page1 = new NUserRating();
-                page1.id = id;
-                page1.ShowDialog();
-                this.Hide();
+                kontrol();
             }
             baglanti.Close();
             int a = f2.Count;
@@ -399,8 +397,7 @@ namespace YazLab1
 
             
 
-        }
-        
+        }        
         void Onerilenler()
         {
             if (baglanti.State == ConnectionState.Closed)
@@ -636,6 +633,7 @@ namespace YazLab1
         private void tabPage2_Click(object sender, EventArgs e)
         {
             SOyladıkların();
+            Onerilenler();
         }
 
         private void panel5_Paint(object sender, PaintEventArgs e)
@@ -1025,6 +1023,41 @@ namespace YazLab1
         private void button3_Click_1(object sender, EventArgs e)
         {
             listBox1.Items.RemoveAt(listBox1.SelectedIndex);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (baglanti.State == ConnectionState.Closed)
+                {
+                    baglanti.Open();
+
+                }
+                SqlCommand cmd = new SqlCommand("INSERT INTO ['BX-Book-Ratings'] ([User-ID],[ISBN],[Book-Rating])" +
+                " VALUES (@UserId,@ISBN,@Bookrating)", baglanti);
+
+                string c = numericUpDown1.Text;
+                int d = Int32.Parse(id);
+                // TextBox'lardan alınan bilgiler etiketlere, oradan da sorguya gönderilir:
+                cmd.Parameters.AddWithValue("@UserId",d );
+                cmd.Parameters.AddWithValue("@ISBN", lblIsbn.Text);
+                cmd.Parameters.AddWithValue("@Bookrating", c);
+                cmd.ExecuteNonQuery();
+
+                baglanti.Close();
+
+                MessageBox.Show("Added.");
+
+                             
+
+
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Error!");
+            }
         }
     }
 }
