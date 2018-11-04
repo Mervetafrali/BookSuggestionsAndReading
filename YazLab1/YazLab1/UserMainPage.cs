@@ -156,7 +156,7 @@ namespace YazLab1
                 baglanti.Open();
             }
 
-            SqlCommand c = new SqlCommand(" select top 10 AVG(['BX-Book-Ratings'].[Book-Rating]) as ortalama_oy, ['BX-Books'].[Book-Title] from ['BX-Book-Ratings'] inner join['BX-Books'] on ['BX-Book-Ratings'].ISBN = ['BX-Books'].ISBN  group by['BX-Books'].[Book-Title]  order by ortalama_oy desc", baglanti);
+            SqlCommand c = new SqlCommand(" select top 10 AVG(['BX-Book-Ratings'].[Book-Rating]) as ortalama_oy, ['BX-Books'].[Book-Title] , count(['BX-Book-Ratings'].[Book-Rating]) as kac_kisi_oyladi from['BX-Book-Ratings'] inner join['BX-Books'] on['BX-Book-Ratings'].ISBN = ['BX-Books'].ISBN group by['BX-Books'].[Book-Title] HAVING COUNT(*) > 10  order by ortalama_oy DESC", baglanti);
             List<topten> fruits = new List<topten>();
             SqlDataReader myReader = null;
 
